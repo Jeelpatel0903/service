@@ -1,0 +1,34 @@
+<div
+    class="table-responsive"
+>
+    <table
+        class="table table-primary">
+        <thead class="table table-danger" >
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Subtype</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let data of userList">
+            <tr>
+                <td scope="row">{{data.name}}</td>
+                <td *ngIf="data.gender === 'Female' else male"><i class="bi bi-gender-female"></i></td>
+                <td>{{data.subtype}}</td>
+                <td *ngIf="data.status === 'Inactive' else online"> <i style="color: red;" class="bi bi-person-check-fill"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #online>
+    <td> 
+        <i style="color: green;" class="bi bi-person-check-fill"></i>
+    </td>
+</ng-template>
+
+<ng-template #male>
+    <td> 
+        <i style="color: green;"  class="bi bi-gender-male"></i>
+    </td>
+</ng-template>
