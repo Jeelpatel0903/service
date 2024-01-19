@@ -25,12 +25,18 @@ export class UserlistComponent implements OnInit {
   EditUserDetails(data:User,i:number)
   {
     console.log("clikbtn");
+    console.log(data);
+    
     
     this.user.onEditUserDetails(data,i)
   }
 
   DeleteUser(data:User,i:number){
     this.user.deleteuser(data,i)
+  }
+
+  openmodel(){
+
   }
 
 }

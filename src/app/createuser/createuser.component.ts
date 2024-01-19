@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServices } from '../services/user.services';
+import { User } from '../Model/User';
 
 @Component({
   selector: 'app-createuser',
@@ -14,10 +15,15 @@ export class CreateuserComponent implements OnInit {
     this.edituser()
   }
 
-  name:string  = ""
-  gender:string  = ""
-  subType:string  = ""
-  status:string  = ""
+  // name:string = ""
+  // gender:string  = ""
+  // subType:string  = ""
+  // status:string  = ""
+  name:string | null = null
+  gender:string | null = null
+  subType:string | null = null
+  status:string | null = null
+
   showcreate:boolean = false
   showedit:boolean = false
 
@@ -27,31 +33,26 @@ export class CreateuserComponent implements OnInit {
       alert("Fill All Fild")
       return
     }
-    this.user.createuser(this.name,this.gender,this.subType,this.status)
-    this.name  = ""
-  this.gender  = ""
-  this.subType  = ""
-  this.status  = ""
+    this.user.createuser(new User({
+      name:this.name,
+      gender:this.gender,
+      subtype:this.subType,
+      status:this.status
+    }))
   }
 
   edituser(){
-
-    console.log("hhh");
     this.user.OnUserEditclick.subscribe(res => {
-      this.name = res.name
-      this.gender = res.gender
-      this.subType = res.subtype
-      this.status = res.status
+    this.name = res.name,
+    this.gender = res.gender,
+    this.subType = res.subtype,
+    this.status = res.status
     })
   }
 
 
   EditUserDetails(){
-    this.user.EditUser(this.name,this.gender,this.subType,this.status)
-    this.name  = ""
-  this.gender  = ""
-  this.subType  = ""
-  this.status  = ""
+    // this.user.EditUser(this.name,this.gender,this.subType,this.status)
   }
 
 }

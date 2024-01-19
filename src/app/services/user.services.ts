@@ -1,19 +1,39 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { User } from "../Model/User";
-import { Loger } from "./logservice";
 
-// @Injectable()
+@Injectable({ providedIn: "root"})
 export class UserServices {
 
     // constructor(private log:Loger){
 
     // }
 
-    user: User[] = [
-        new User("jeel", "Male", "Monthly", "Active"),
-        new User("arjun", "Male", "Yearly", "Active"),
-        new User("manthan", "Male", "Quaterly", "Active"),
-    ];
+    user: Array<User> = []
+
+    constructor(){
+        this.user.push(...[new User({
+            name:'jeel',
+            gender:'Male',
+            subtype:'Monthly',
+            status:'Active'
+        }),
+        new User({
+            name:'Mantha',
+            gender:'Male',
+            subtype:'Monthly',
+            status:'Active'
+        }),new User({
+            name:'Arjun',
+            gender:'Male',
+            subtype:'Monthly',
+            status:'Active'
+        }),
+    
+    
+    ])
+        
+        }
+    
     index: number = 0
     getalluser() {
         return this.user;
@@ -34,9 +54,10 @@ export class UserServices {
     }
 
 
-    createuser(name: string, gender: string, subtype: string, status: string) {
-        let user = new User(name, gender, subtype, status);
-        this.user.push(user)
+    createuser(data:User) {
+        // let user = new User(name, gender, subtype, status);
+        // this.user.push(user)
+        this.user.push(data)
         // this.log.showalert()
     }
 
@@ -50,8 +71,6 @@ export class UserServices {
         this.user[this.index].gender = gender
         this.user[this.index].subtype = subtype
         this.user[this.index].status = status
-
-
     }
 
 
