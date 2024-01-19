@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { UserServices } from '../services/user.services';
-
+import { User } from '../Model/User';
+ 
 @Component({
   selector: 'app-userlist',
   templateUrl: './userlist.component.html',
@@ -8,11 +9,28 @@ import { UserServices } from '../services/user.services';
 })
 export class UserlistComponent implements OnInit {
 
-  constructor(private user:UserServices) { }
+  constructor(
+    // @Inject('User_Services')
+   private user:UserServices) { }
 
   ngOnInit(): void {
   }
 
   userList=this.user.getalluser();
+
+  ShowUserDetails(data:User){
+    this.user.OnShowUserDetails(data);
+  }
+
+  EditUserDetails(data:User,i:number)
+  {
+    console.log("clikbtn");
+    
+    this.user.onEditUserDetails(data,i)
+  }
+
+  DeleteUser(data:User,i:number){
+    this.user.deleteuser(data,i)
+  }
 
 }

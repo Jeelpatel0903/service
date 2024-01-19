@@ -9,14 +9,19 @@
                 <th scope="col">Gender</th>
                 <th scope="col">Subtype</th>
                 <th scope="col">Status</th>
+                <th scope="col" colspan="3">Action</th>
             </tr>
         </thead>
-        <tbody *ngFor="let data of userList">
+        <tbody *ngFor="let data of userList; let i = index">
             <tr>
+                <td scope="row">{{i+1}}</td>
                 <td scope="row">{{data.name}}</td>
                 <td *ngIf="data.gender === 'Female' else male"><i class="bi bi-gender-female"></i></td>
                 <td>{{data.subtype}}</td>
                 <td *ngIf="data.status === 'Inactive' else online"> <i style="color: red;" class="bi bi-person-check-fill"></i></td>
+                <td (click)="ShowUserDetails(data)"><i class="bi bi-eye"></i></td>
+                <td (click)="EditUserDetails(data,i)"><i class="bi bi-pencil-square"></i></td>
+                <td (click)="DeleteUser(data,i)"><i class="bi bi-trash3-fill text-danger"></i></td>
             </tr>
         </tbody>
     </table>

@@ -7,12 +7,17 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { UserServices } from './services/user.services';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { FormsModule } from '@angular/forms';
+import { Loger } from './services/logservice';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UserlistComponent,
     CreateuserComponent,
+    UserdetailsComponent,
 
   ],
   imports: [
