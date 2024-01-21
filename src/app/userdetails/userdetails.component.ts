@@ -12,7 +12,7 @@ export class UserdetailsComponent implements OnInit {
 
   constructor(private user:UserServices) { }
 
-  selectedUser! : User
+  selectedUser : User | null = null
 
 
   ngOnInit() {
@@ -20,12 +20,15 @@ export class UserdetailsComponent implements OnInit {
       this.selectedUser = res;
       console.log(this.selectedUser);
       
-    })
-    
-    
+    }) 
+  }
+
+
+  closebtn(){
+    this.selectedUser = null;
   }
 
   
 
-  
-}
+} 
+

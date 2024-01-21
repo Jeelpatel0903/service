@@ -41,6 +41,8 @@ export class CreateuserComponent implements OnInit {
       subtype:this.subType,
       status:this.status
     }))
+    this.name="",this.gender="",this.subType="",this.status="";
+
   }
 
   edituser(){
