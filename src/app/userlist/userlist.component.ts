@@ -9,6 +9,7 @@ import { User } from '../Model/User';
 })
 export class UserlistComponent implements OnInit {
 
+  flag:boolean = false
   constructor(
     // @Inject('User_Services')
    private user:UserServices) { }
@@ -24,6 +25,7 @@ export class UserlistComponent implements OnInit {
 
   EditUserDetails(data:User,i:number)
   {
+    this.flag = true
     console.log("clikbtn");
     console.log(data);
     this.user.onEditUserDetails(data,i)

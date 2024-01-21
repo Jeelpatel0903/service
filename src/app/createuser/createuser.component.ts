@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserServices } from '../services/user.services';
 import { User } from '../Model/User';
 
@@ -14,6 +14,8 @@ export class CreateuserComponent implements OnInit {
   ngOnInit(): void {
     this.edituser()
   }
+
+  @Input() val!:boolean
 
   // name:string = ""
   // gender:string  = ""
@@ -52,7 +54,9 @@ export class CreateuserComponent implements OnInit {
 
 
   EditUserDetails(){
+    this.val = !this.val;
     this.user.EditUser(this.name!,this.gender!,this.subType!,this.status!)
+    this.name="",this.gender="",this.subType="",this.status="";
   }
 
 }
