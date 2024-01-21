@@ -52,7 +52,7 @@ export class CreateuserComponent implements OnInit {
 
 
   EditUserDetails(){
-    // this.user.EditUser(this.name,this.gender,this.subType,this.status)
+    this.user.EditUser(this.name!,this.gender!,this.subType!,this.status!)
   }
 
 }

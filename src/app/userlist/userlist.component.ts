@@ -26,8 +26,6 @@ export class UserlistComponent implements OnInit {
   {
     console.log("clikbtn");
     console.log(data);
-    
-    
     this.user.onEditUserDetails(data,i)
   }
 

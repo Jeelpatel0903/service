@@ -49,6 +49,7 @@ export class UserServices {
 
     onEditUserDetails(user: User, i: number) {
         console.log("service");
+        console.log(user);
         this.OnUserEditclick.emit(user)
         this.index = i
     }
