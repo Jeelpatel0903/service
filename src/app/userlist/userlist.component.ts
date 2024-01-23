@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { UserServices } from '../services/user.services';
 import { User } from '../Model/User';
- 
 @Component({
   selector: 'app-userlist',
-  templateUrl: './userlist.component.html',
+  templateUrl:'./userlist.component.html',
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
@@ -15,6 +14,8 @@ export class UserlistComponent implements OnInit {
    private user:UserServices) { }
 
   ngOnInit(): void {
+    console.log("on init",this.flag);
+    
   }
 
   userList=this.user.getalluser();
@@ -23,13 +24,13 @@ export class UserlistComponent implements OnInit {
     this.user.OnShowUserDetails(data);
   }
 
-  EditUserDetails(data:User,i:number)
-  {
-    this.flag = true
-    console.log("clikbtn");
+  EditUserDetails(data: User, i: number) {
+    this.flag = !this.flag; // Toggle the flag value
+    console.log("edit click ", this.flag);
     console.log(data);
-    this.user.onEditUserDetails(data,i)
+    this.user.onEditUserDetails(data, i);
   }
+  
 
   DeleteUser(data:User,i:number){
     this.user.deleteuser(data,i)
@@ -38,5 +39,6 @@ export class UserlistComponent implements OnInit {
   openmodel(){
 
   }
+  
 
 }
